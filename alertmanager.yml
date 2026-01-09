@@ -1,0 +1,16 @@
+global:
+  resolve_timeout: 5m
+
+route:
+  group_by: ['alertname']
+  group_wait: 30s
+  group_interval: 5m
+  repeat_interval: 12h
+  receiver: 'slack_notifications'
+
+receivers:
+- name: 'slack_notifications'
+  slack_configs:
+  - api_url: "REPLACE_WITH_YOUR_WEBHOOK"  
+    channel: '#monitoring_alert'
+    send_resolved: true

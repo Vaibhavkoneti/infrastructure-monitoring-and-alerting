@@ -1,0 +1,19 @@
+groups:
+- name: General
+  rules:
+  - alert: InstanceDown
+    expr: up == 0
+    for: 1m
+    labels:
+      severity: critical
+    annotations:
+      summary: "Instance {{ $labels.instance }} down"
+      description: "{{ $labels.instance }} of job {{ $labels.job }} has been down for more than 1 minute."
+  - alert: HighCPUAlert
+    expr: avg(rate(node_cpu_seconds_total{mode="user"}[1m])) * 100 < 80
+    for: 5s
+    labels:
+      severity: warning
+    annotations:
+      summary: "High CPU usage on {{ $labels.instance }}"
+      description: "{{ $labels.instance }} has a CPU usage above 80% for 2 minutes."
