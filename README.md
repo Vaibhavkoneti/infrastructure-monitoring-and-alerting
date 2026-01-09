@@ -1,4 +1,4 @@
-# Monitoring Stack with Prometheus, Grafana, Node Exporter, and Alertmanager
+# Monitoring Stack with Prometheus, Grafana, Node Exporter and Alertmanager
 
 This project sets up a comprehensive monitoring solution using Docker Compose, including:
 
@@ -68,4 +68,5 @@ The `alert_rules.yml` file defines the following alerts:
     ```bash
     docker-compose down
     ```
+
 
